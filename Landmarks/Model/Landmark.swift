@@ -13,15 +13,20 @@ struct Landmark: Hashable, Codable, Identifiable {
     var id: Int
     var name: String
     var park: String
-    var category: String
     var city: String
     var state: String
     var description: String
     var isFeatured: Bool
     var isFavorite: Bool
     
-    var coordinates: Coordinates
+    var category: Category
+    enum Category: String, CaseIterable, Codable {
+        case lakes = "Lakes"
+        case rivers = "Rivers"
+        case mountains = "Mountains"
+    }
     
+    var coordinates: Coordinates
     var locationCoordicate: CLLocationCoordinate2D {
         CLLocationCoordinate2D(
             latitude: coordinates.latitude, longitude: coordinates.longitude
