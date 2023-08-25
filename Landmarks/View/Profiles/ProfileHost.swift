@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ProfileHost: View {
-    @Environment(.\editMode) var editMode
-    @EnvironmentObject var modelData: ModelData()
+    @Environment(\.editMode) var editMode
+    @EnvironmentObject var modelData: ModelData
     @State private var draftProfile = Profile.default
     
     var body: some View {
@@ -23,6 +23,7 @@ struct ProfileHost: View {
                 ProfileSummary(profile: modelData.profile)
             } else {
                 Text("Profile Editor")
+                ProfileEditor(profile: $draftProfile)
             }
             
         }
